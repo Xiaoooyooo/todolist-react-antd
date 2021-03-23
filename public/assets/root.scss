@@ -1,0 +1,16 @@
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  #root {
+    height: 100%;
+    background: url(./2_bc3d32a696895f78c19df6c717586a5d.svg) no-repeat center/cover fixed;
+  }
+}
+
+[class^='ant'] {
+  background: none;
+}

@@ -1,0 +1,19 @@
+.no-margin {
+  margin: 0;
+}
+
+.item-info-container {
+  display: flex;
+  align-items: baseline;
+  width: 100%
+}
+
+.item-info-title {
+  font-size: 20px;
+}
+
+.item-info-date {
+  padding-left: 5px;
+  font-size: 5px;
+  color: #ccc;
+}

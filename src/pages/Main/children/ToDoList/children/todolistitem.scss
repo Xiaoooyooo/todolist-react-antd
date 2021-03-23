@@ -1,0 +1,42 @@
+.todolist-item {
+  position: relative;
+  padding: 10px 30px 10px 50px;
+  cursor: pointer;
+  transition: all .3s ease;
+  flex-wrap: wrap;
+  height: 75px;
+  position: relative;
+  &:hover {
+    background: rgba(240, 240, 240, 1);
+  }
+  & > * {
+    position: relative;
+    z-index: 10;
+  }
+  .checkbox {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+  }
+  .detail {
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .bg {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    transition: all .3s linear;
+  }
+  .deleting {
+    transition: all 3s linear;
+    right: 0;
+    background: crimson !important;
+  }
+}
