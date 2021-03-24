@@ -2,7 +2,7 @@
 + 使用说明
   ```bash
     npm install
-    npm run dev
+    npm start
   ```
 
 + 效果展示
