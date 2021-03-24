@@ -4,6 +4,7 @@ import "./todolistiteminfo.scss";
 
 class ToDoListItemInfo extends Component {
   render() {
+    //各项数据展示时的标题部分
     return (
       <div className="item-info-container">
         <h3 className="item-info-title no-margin">{this.props.title}</h3>

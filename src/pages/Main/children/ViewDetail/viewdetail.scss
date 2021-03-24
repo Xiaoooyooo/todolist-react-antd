@@ -1,0 +1,42 @@
+@mixin title-date {
+  margin: 0;
+  text-align: center;
+}
+
+.detail-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 40px 30px 10px;
+  .detail-title {
+    font-size: 25px;
+    @include title-date;
+  }
+
+  .detail-date {
+    @include title-date;
+    font-size: 10px;
+    color: #ccc;
+  }
+
+  .detail-content {
+    text-indent: 2em;
+    padding: 0.5em 1em;
+    width: 100%;
+    height: 20em;
+    margin-top: 2em;
+    resize: none;
+    border: none;
+    outline: 0px transparent solid;
+    transition: outline .3s ease;
+    &:focus {
+      outline: 3px solid rgb(48, 231, 255);
+    }
+  }
+  .controler {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
