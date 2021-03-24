@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "set NODE_ENV=development&& npx webpack serve --config webpack.dev.js"
+    "start": "set NODE_ENV=development&& npx webpack serve --config webpack.dev.js"
   },
   "keywords": [],
   "author": "",
