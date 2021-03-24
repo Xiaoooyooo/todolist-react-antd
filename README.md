@@ -7,12 +7,12 @@
 
 + 效果展示
 
-  ![001](./public/screenshots/111.png)
+  ![001](./public/screenshots/001.jpg)
 
-  ![002](./public/screenshots/222.png)
+  ![002](./public/screenshots/002.jpg)
 
-  ![003](./public/screenshots/333.png)
+  ![003](./public/screenshots/003.jpg)
 
-  ![004](./public/screenshots/444.png)
+  ![004](./public/screenshots/004.jpg)
 
-  ![005](./public/screenshots/555.png)
+  ![005](./public/screenshots/005.jpg)
