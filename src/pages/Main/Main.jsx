@@ -4,9 +4,9 @@ const { Header, Content, Footer } = Layout;
 
 import "./main.scss";
 
-import ToDoList from "./children/ToDoList/ToDoList";
-import ViewDetail from "./children/ViewDetail/ViewDetail";
-import AddNewItemTable from "./children/AddNewItem/AddNewItem";
+import ToDoList from "./ToDoList/ToDoList";
+import ViewDetail from "./ViewDetail/ViewDetail";
+import AddNewItemTable from "./AddNewItem/AddNewItem";
 
 class Main extends Component {
   constructor() {
@@ -16,8 +16,8 @@ class Main extends Component {
       isViewDetail: false,
       //是否添加新项目（是否显示添加新项目的组件）
       isAddNew: false,
-      //用于保存查看详细信息的组件，配合动画效果，以实现页面及时刷新
-      right: null,
+      //当前正在查看的item
+      viewItem: null,
     };
     this.handleViewDetailChange = this.handleViewDetailChange.bind(this);
     this.updateDetail = this.updateDetail.bind(this);
@@ -26,11 +26,8 @@ class Main extends Component {
   }
   //修改isAddNew之前可能的额外操作
   handleAddNewChange() {
-    //如果当前在查看详情页
-    if (this.state.isViewDetail) {
-      //关闭查看详情页
-      this.changeViewDetail();
-    }
+    //如果当前在查看详情页，则关闭查看详情页
+    this.state.isViewDetail && this.changeViewDetail();
     this.changeAddNew();
   }
   //修改isAddNew
@@ -50,39 +47,28 @@ class Main extends Component {
   //点击了某项数据后的事件处理函数，进入到查看详情页
   handleViewDetailChange(item) {
     // 保存当前想要查看的项目信息
-    this.viewItem = item;
-    this.changeViewDetail();
+    this.setState({
+      viewItem: item,
+    });
+    //异步修改isViewDetail
+    Promise.resolve().then(() => {
+      this.changeViewDetail();
+    });
   }
   //修改是否查看项目详细信息变量的函数
   changeViewDetail() {
     //记下当前状态
     let isViewDetail = !this.state.isViewDetail;
-    /*
-     * 根据当前状态决定查看详情组件（right）的渲染情况
-     * 保存在state中以达到响应式刷新页面的目的
-     */
-    if (isViewDetail) {
-      this.setState({
-        isViewDetail: isViewDetail,
-        right: (
-          <ViewDetail
-            className="main-content-container-right"
-            goBack={this.updateDetail}
-            item={this.viewItem}
-          />
-        ),
-      });
-    } else {
-      this.setState({
-        isViewDetail: isViewDetail,
-      });
-      //配合动画效果，在查看详情组件隐藏后在移除该组件
+    this.setState({
+      isViewDetail: isViewDetail,
+    });
+    //如果当前没有查看详情，则移除详情页
+    !isViewDetail &&
       setTimeout(() => {
         this.setState({
-          right: null,
+          viewItem: null,
         });
       }, 500);
-    }
   }
   render() {
     //新添加项目组件
@@ -102,7 +88,14 @@ class Main extends Component {
         viewDetailChange={this.handleViewDetailChange}
       />
     );
-
+    //查看详情/编辑
+    let right = this.state.viewItem && (
+      <ViewDetail
+        className="main-content-container-right"
+        goBack={this.updateDetail}
+        item={this.state.viewItem}
+      />
+    );
     return (
       <Layout style={{ overflow: "auto", height: "100%" }}>
         <Header className="main-header">~ Welcome ~</Header>
@@ -120,7 +113,7 @@ class Main extends Component {
             >
               {left}
               {center}
-              {this.state.right}
+              {right}
             </div>
           </div>
         </Content>

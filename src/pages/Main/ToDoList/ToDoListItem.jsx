@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { List, Checkbox } from "antd";
 
-import ToDoListItemInfo from "./children/ToDoListItemInfo";
+import ToDoListItemInfo from "./ToDoListItemInfo";
 import "./todolistitem.scss";
 
 class ToDoListItem extends Component {

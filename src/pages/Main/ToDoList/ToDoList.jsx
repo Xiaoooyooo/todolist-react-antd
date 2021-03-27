@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { List } from "antd";
 
-import ToDoListItem from "./children/ToDoListItem";
+import ToDoListItem from "./ToDoListItem";
 
 import "./todolist.scss";
 
